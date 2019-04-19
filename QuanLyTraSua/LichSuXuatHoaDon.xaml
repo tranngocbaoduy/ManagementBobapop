@@ -1,0 +1,131 @@
+﻿<Window x:Class="QuanLyTraSua.LichSuXuatHoaDon"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyTraSua"
+        mc:Ignorable="d"
+        
+        DataContext="{StaticResource LichSuXuatHoaDonVM}"
+       xmlns:uc="clr-namespace:QuanLyTraSua.UserControlQLTS" 
+        xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
+        Title="Lịch Sử Xuất Hoá Đơn"  Height="800" Width="1400"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" 
+        ResizeMode="NoResize"
+        WindowStyle="None"  
+        BorderBrush="Black"
+        BorderThickness="0.4"
+        WindowStartupLocation="CenterScreen"
+        Name="lichSuXuatHoaDonWindow">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedHoaDonWindowCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Grid">
+                <Setter Property="Margin" Value="0"></Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" >
+            <uc:ControlBarUC Height="auto" Width="auto" Tag="{Binding Title,ElementName=lichSuXuatHoaDonWindow}" Margin="276,0,0.4,-0.2" ></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" Text="Lịch Sử Xuất Hoá Đơn" FontSize="40" FontWeight="Black" Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBox>
+            <materialDesign:Card Grid.Row="1" Margin="15" Height="auto" VerticalAlignment="Stretch" >
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="FontSize" Value="20"></Setter>
+                            <Setter Property="FontWeight" Value="Bold"></Setter> 
+                            <Setter Property="Margin" Value="15"></Setter>
+                            <Setter Property="Height" Value="60"></Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <DatePicker ToolTip="Xem từ ngày" Width="120" Height="40" SelectedDate="{Binding NGAYBATDAU}"  materialDesign:HintAssist.Hint="Ngày Bắt Đầu" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  Margin="15 5 15 5" />
+                    <DatePicker ToolTip="Xem đến ngày" Width="120" Height="40" SelectedDate="{Binding NGAYKETTHUC}"  materialDesign:HintAssist.Hint="Ngày kết thúc" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  Margin="15 5 15 5" />
+                    <Button ToolTip="Filter theo khách hàng vãng lai" Command="{Binding GetKhachVangLaiCommand}" Background="#FF8A00" Margin="10" Width="200" Content="Khách Vãng Lai"   ></Button>
+                    <Button ToolTip="Filter theo khách hàng thân thiết" Command="{Binding GetKhachHangThanThietCommand}" Background="#FF8A00" Margin="10" Width="200" >
+                        <TextBlock  Text="Khách Hàng Thân Thiết" TextAlignment="Center" TextWrapping="Wrap" Width="150" ></TextBlock>
+                    </Button>
+                    <Button ToolTip="Get All" Command="{Binding GetAllCommand}" Background="#FF8A00" Content="Xem Tất Cả" Margin="10" Width="200"></Button>
+                </StackPanel>
+            </materialDesign:Card>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition> 
+                    <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <materialDesign:Card ToolTip="Thông tin hoá đơn" Grid.Column="0" Margin="15 15 7 15" VerticalAlignment="Stretch" >
+                    <ScrollViewer VerticalScrollBarVisibility="Disabled">
+                        <ListView ItemsSource="{Binding HoaDonList}" SelectedItem="{Binding SelectedItem }" >
+                            <ListView.View >
+                                <GridView>
+                                    <GridViewColumn Header="Mã HD" DisplayMemberBinding="{Binding MSHD}"></GridViewColumn>
+                                    <GridViewColumn Header="Tổng Tiền" DisplayMemberBinding="{Binding TONGTIEN}"></GridViewColumn>
+                                    <GridViewColumn Header="Ngày Xuất" DisplayMemberBinding="{Binding NGAYXUAT}"></GridViewColumn>
+                                    <GridViewColumn Header="MSNV" DisplayMemberBinding="{Binding MSNV}"></GridViewColumn>
+                                    <GridViewColumn Header="SDT Khách Hàng" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
+                                    <GridViewColumn Header="Giảm Giá" DisplayMemberBinding="{Binding GIAMGIA}"></GridViewColumn>
+                                    <GridViewColumn Header="Note" DisplayMemberBinding="{Binding NOTE}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </ScrollViewer>
+                </materialDesign:Card>
+                <Grid  Grid.Column="1" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <materialDesign:Card ToolTip="Thông tin sự kiện" Grid.Row="0" Margin="7 15 15 15" VerticalAlignment="Stretch" >
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                            <ListView ItemsSource="{Binding SuKienList}"> 
+                                <ListView.View >
+                                    <GridView>
+                                        <GridViewColumn Header="Tên SK" DisplayMemberBinding="{Binding TENSK}"></GridViewColumn>
+                                        <GridViewColumn Header="Nội Dung SK" DisplayMemberBinding="{Binding NDSUKIEN}"></GridViewColumn>
+                                        <GridViewColumn Header="Giảm Giá" DisplayMemberBinding="{Binding GIAMGIA}"></GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+                    <materialDesign:Card ToolTip="Thông tin mặt hàng" Grid.Row="1" Margin="7 15 15 15" VerticalAlignment="Stretch" >
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                            <ListView ItemsSource="{Binding ChiTietHoaDonList}"> 
+                                <ListView.View >
+                                    <GridView>
+                                        <GridViewColumn Header="Tên Mặt Hàng" DisplayMemberBinding="{Binding MSMH}"></GridViewColumn>
+                                        <GridViewColumn Header="Số Lượng" DisplayMemberBinding="{Binding SOLUONG}"></GridViewColumn>
+                                        <GridViewColumn Header="Đơn Giá" DisplayMemberBinding="{Binding DONGIA}"></GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+                </Grid>
+               
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLTSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="QLTSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CALAMVIECs" EntityType="QLTSModel.CALAMVIEC" />
+    <EntitySet Name="CHECKINGIOLAMVIECs" EntityType="QLTSModel.CHECKINGIOLAMVIEC" />
+    <EntitySet Name="CHITIETHOADONs" EntityType="QLTSModel.CHITIETHOADON" />
+    <EntitySet Name="CHITIETPHIEUNHAPs" EntityType="QLTSModel.CHITIETPHIEUNHAP" />
+    <EntitySet Name="CHITIETPHIEUXUATs" EntityType="QLTSModel.CHITIETPHIEUXUAT" />
+    <EntitySet Name="HOADONs" EntityType="QLTSModel.HOADON" />
+    <EntitySet Name="HOADONSUKIENs" EntityType="QLTSModel.HOADONSUKIEN" />
+    <EntitySet Name="KHACHHANGs" EntityType="QLTSModel.KHACHHANG" />
+    <EntitySet Name="KHOes" EntityType="QLTSModel.KHO" />
+    <EntitySet Name="LOAIMATHANGs" EntityType="QLTSModel.LOAIMATHANG" />
+    <EntitySet Name="LOAISUKIENs" EntityType="QLTSModel.LOAISUKIEN" />
+    <EntitySet Name="MATHANGs" EntityType="QLTSModel.MATHANG" />
+    <EntitySet Name="NGUYENLIEUx" EntityType="QLTSModel.NGUYENLIEU" />
+    <EntitySet Name="NHACUNGCAPs" EntityType="QLTSModel.NHACUNGCAP" />
+    <EntitySet Name="NHANVIENs" EntityType="QLTSModel.NHANVIEN" />
+    <EntitySet Name="PHIEUNHAPs" EntityType="QLTSModel.PHIEUNHAP" />
+    <EntitySet Name="PHIEUXUATs" EntityType="QLTSModel.PHIEUXUAT" />
+    <EntitySet Name="ROLEs" EntityType="QLTSModel.ROLE" />
+    <EntitySet Name="SUKIENs" EntityType="QLTSModel.SUKIEN" />
+    <EntitySet Name="TAIKHOANs" EntityType="QLTSModel.TAIKHOAN" />
+    <AssociationSet Name="PK_NHANVIEN_CALAMVIEC" Association="QLTSModel.PK_NHANVIEN_CALAMVIEC">
+      <End Role="CALAMVIEC" EntitySet="CALAMVIECs" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_NHANVIEN_CHECKINGIOLAMVIEC" Association="QLTSModel.PK_NHANVIEN_CHECKINGIOLAMVIEC">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="CHECKINGIOLAMVIEC" EntitySet="CHECKINGIOLAMVIECs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CHITIETHOADON_HOADON" Association="QLTSModel.PK_CHITIETHOADON_HOADON">
+      <End Role="HOADON" EntitySet="HOADONs" />
+      <End Role="CHITIETHOADON" EntitySet="CHITIETHOADONs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CHITIETPHIEUNHAP_KHO" Association="QLTSModel.PK_CHITIETPHIEUNHAP_KHO">
+      <End Role="KHO" EntitySet="KHOes" />
+      <End Role="CHITIETPHIEUNHAP" EntitySet="CHITIETPHIEUNHAPs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CHITIETPHIEUNHAP_NGUYENLIEU" Association="QLTSModel.PK_CHITIETPHIEUNHAP_NGUYENLIEU">
+      <End Role="NGUYENLIEU" EntitySet="NGUYENLIEUx" />
+      <End Role="CHITIETPHIEUNHAP" EntitySet="CHITIETPHIEUNHAPs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CHITIETPHIEUNHAP_PHIEUNHAP" Association="QLTSModel.PK_CHITIETPHIEUNHAP_PHIEUNHAP">
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
+      <End Role="CHITIETPHIEUNHAP" EntitySet="CHITIETPHIEUNHAPs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CHITIETPHIEUXUAT_KHO" Association="QLTSModel.PK_CHITIETPHIEUXUAT_KHO">
+      <End Role="KHO" EntitySet="KHOes" />
+      <End Role="CHITIETPHIEUXUAT" EntitySet="CHITIETPHIEUXUATs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CHITIETPHIEUXUAT_NGUYENLIEU" Association="QLTSModel.PK_CHITIETPHIEUXUAT_NGUYENLIEU">
+      <End Role="NGUYENLIEU" EntitySet="NGUYENLIEUx" />
+      <End Role="CHITIETPHIEUXUAT" EntitySet="CHITIETPHIEUXUATs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CHITIETPHIEUXUAT_PHIEUXUAT" Association="QLTSModel.PK_CHITIETPHIEUXUAT_PHIEUXUAT">
+      <End Role="PHIEUXUAT" EntitySet="PHIEUXUATs" />
+      <End Role="CHITIETPHIEUXUAT" EntitySet="CHITIETPHIEUXUATs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_HOADON_HOADONSUKIEN" Association="QLTSModel.PK_HOADON_HOADONSUKIEN">
+      <End Role="HOADON" EntitySet="HOADONs" />
+      <End Role="HOADONSUKIEN" EntitySet="HOADONSUKIENs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_HOADON_KHACHHANG" Association="QLTSModel.PK_HOADON_KHACHHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="HOADON" EntitySet="HOADONs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_HOADON_NHANVIEN" Association="QLTSModel.PK_HOADON_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="HOADON" EntitySet="HOADONs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_SUKIEN_HOADONSUKIEN" Association="QLTSModel.PK_SUKIEN_HOADONSUKIEN">
+      <End Role="SUKIEN" EntitySet="SUKIENs" />
+      <End Role="HOADONSUKIEN" EntitySet="HOADONSUKIENs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_MATHANG_LOAIMATHANG" Association="QLTSModel.PK_MATHANG_LOAIMATHANG">
+      <End Role="LOAIMATHANG" EntitySet="LOAIMATHANGs" />
+      <End Role="MATHANG" EntitySet="MATHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_SUKIEN_LOAISUKIEN" Association="QLTSModel.PK_SUKIEN_LOAISUKIEN">
+      <End Role="LOAISUKIEN" EntitySet="LOAISUKIENs" />
+      <End Role="SUKIEN" EntitySet="SUKIENs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_NGUYENLIEU_NHACUNGCAP" Association="QLTSModel.PK_NGUYENLIEU_NHACUNGCAP">
+      <End Role="NHACUNGCAP" EntitySet="NHACUNGCAPs" />
+      <End Role="NGUYENLIEU" EntitySet="NGUYENLIEUx" />
+    </AssociationSet>
+    <AssociationSet Name="PK_NHANVIEN_ROLE" Association="QLTSModel.PK_NHANVIEN_ROLE">
+      <End Role="ROLE" EntitySet="ROLEs" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_NHANVIEN_TAIKHOAN" Association="QLTSModel.PK_NHANVIEN_TAIKHOAN">
+      <End Role="TAIKHOAN" EntitySet="TAIKHOANs" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_PHIEUNHAP_NHANVIEN" Association="QLTSModel.PK_PHIEUNHAP_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
+    </AssociationSet>
+    <AssociationSet Name="PK_PHIEUXUAT_NHANVIEN" Association="QLTSModel.PK_PHIEUXUAT_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="PHIEUXUAT" EntitySet="PHIEUXUATs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CALAMVIEC">
+    <Key>
+      <PropertyRef Name="MSCLV" />
+    </Key>
+    <Property Name="MSCLV" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TUGIO" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="DENGIO" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="NHANVIENs" Relationship="QLTSModel.PK_NHANVIEN_CALAMVIEC" FromRole="CALAMVIEC" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="CHECKINGIOLAMVIEC">
+    <Key>
+      <PropertyRef Name="MSNV" />
+      <PropertyRef Name="NGAYCHECKIN" />
+    </Key>
+    <Property Name="MSNV" Type="Int32" Nullable="false" />
+    <Property Name="NGAYCHECKIN" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="THOIGIANVAOCA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="THOIGIANKETTHUCCA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRANGTHAI" Type="Int32" Nullable="false" />
+    <Property Name="TRE" Type="Boolean" Nullable="false" />
+    <Property Name="SOM" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QLTSModel.PK_NHANVIEN_CHECKINGIOLAMVIEC" FromRole="CHECKINGIOLAMVIEC" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="CHITIETHOADON">
+    <Key>
+      <PropertyRef Name="MSHD" />
+      <PropertyRef Name="MSMH" />
+    </Key>
+    <Property Name="MSHD" Type="Int32" Nullable="false" />
+    <Property Name="MSMH" Type="Int32" Nullable="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="DONGIA" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="HOADON" Relationship="QLTSModel.PK_CHITIETHOADON_HOADON" FromRole="CHITIETHOADON" ToRole="HOADON" />
+  </EntityType>
+  <EntityType Name="CHITIETPHIEUNHAP">
+    <Key>
+      <PropertyRef Name="MSPN" />
+      <PropertyRef Name="MSNL" />
+    </Key>
+    <Property Name="MSPN" Type="Int32" Nullable="false" />
+    <Property Name="MSNL" Type="Int32" Nullable="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="DONGIA" Type="Int32" Nullable="false" />
+    <Property Name="MSKHO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="KHO" Relationship="QLTSModel.PK_CHITIETPHIEUNHAP_KHO" FromRole="CHITIETPHIEUNHAP" ToRole="KHO" />
+    <NavigationProperty Name="NGUYENLIEU" Relationship="QLTSModel.PK_CHITIETPHIEUNHAP_NGUYENLIEU" FromRole="CHITIETPHIEUNHAP" ToRole="NGUYENLIEU" />
+    <NavigationProperty Name="PHIEUNHAP" Relationship="QLTSModel.PK_CHITIETPHIEUNHAP_PHIEUNHAP" FromRole="CHITIETPHIEUNHAP" ToRole="PHIEUNHAP" />
+  </EntityType>
+  <EntityType Name="CHITIETPHIEUXUAT">
+    <Key>
+      <PropertyRef Name="MSPX" />
+      <PropertyRef Name="MSNL" />
+    </Key>
+    <Property Name="MSPX" Type="Int32" Nullable="false" />
+    <Property Name="MSNL" Type="Int32" Nullable="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="MSKHO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="KHO" Relationship="QLTSModel.PK_CHITIETPHIEUXUAT_KHO" FromRole="CHITIETPHIEUXUAT" ToRole="KHO" />
+    <NavigationProperty Name="NGUYENLIEU" Relationship="QLTSModel.PK_CHITIETPHIEUXUAT_NGUYENLIEU" FromRole="CHITIETPHIEUXUAT" ToRole="NGUYENLIEU" />
+    <NavigationProperty Name="PHIEUXUAT" Relationship="QLTSModel.PK_CHITIETPHIEUXUAT_PHIEUXUAT" FromRole="CHITIETPHIEUXUAT" ToRole="PHIEUXUAT" />
+  </EntityType>
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="MSHD" />
+    </Key>
+    <Property Name="MSHD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TONGTIEN" Type="Int32" Nullable="false" />
+    <Property Name="NGAYXUAT" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MSNV" Type="Int32" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GIAMGIA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NOTE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CHITIETHOADONs" Relationship="QLTSModel.PK_CHITIETHOADON_HOADON" FromRole="HOADON" ToRole="CHITIETHOADON" />
+    <NavigationProperty Name="HOADONSUKIENs" Relationship="QLTSModel.PK_HOADON_HOADONSUKIEN" FromRole="HOADON" ToRole="HOADONSUKIEN" />
+    <NavigationProperty Name="KHACHHANG" Relationship="QLTSModel.PK_HOADON_KHACHHANG" FromRole="HOADON" ToRole="KHACHHANG" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QLTSModel.PK_HOADON_NHANVIEN" FromRole="HOADON" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="HOADONSUKIEN">
+    <Key>
+      <PropertyRef Name="MSHD" />
+      <PropertyRef Name="MASK" />
+    </Key>
+    <Property Name="MSHD" Type="Int32" Nullable="false" />
+    <Property Name="MASK" Type="Int32" Nullable="false" />
+    <Property Name="GIAMGIA" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MLSK" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="HOADON" Relationship="QLTSModel.PK_HOADON_HOADONSUKIEN" FromRole="HOADONSUKIEN" ToRole="HOADON" />
+    <NavigationProperty Name="SUKIEN" Relationship="QLTSModel.PK_SUKIEN_HOADONSUKIEN" FromRole="HOADONSUKIEN" ToRole="SUKIEN" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="SDT" />
+    </Key>
+    <Property Name="SDT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TENKH" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DIEMTT" Type="Int32" Nullable="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ACTIVE" Type="Boolean" />
+    <NavigationProperty Name="HOADONs" Relationship="QLTSModel.PK_HOADON_KHACHHANG" FromRole="KHACHHANG" ToRole="HOADON" />
+  </EntityType>
+  <EntityType Name="KHO">
+    <Key>
+      <PropertyRef Name="MSKHO" />
+    </Key>
+    <Property Name="MSKHO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENKHO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CHITIETPHIEUNHAPs" Relationship="QLTSModel.PK_CHITIETPHIEUNHAP_KHO" FromRole="KHO" ToRole="CHITIETPHIEUNHAP" />
+    <NavigationProperty Name="CHITIETPHIEUXUATs" Relationship="QLTSModel.PK_CHITIETPHIEUXUAT_KHO" FromRole="KHO" ToRole="CHITIETPHIEUXUAT" />
+  </EntityType>
+  <EntityType Name="LOAIMATHANG">
+    <Key>
+      <PropertyRef Name="MSLMH" />
+    </Key>
+    <Property Name="MSLMH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENLMH" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="MATHANGs" Relationship="QLTSModel.PK_MATHANG_LOAIMATHANG" FromRole="LOAIMATHANG" ToRole="MATHANG" />
+  </EntityType>
+  <EntityType Name="LOAISUKIEN">
+    <Key>
+      <PropertyRef Name="MLSK" />
+    </Key>
+    <Property Name="MLSK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENLSK" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="SUKIENs" Relationship="QLTSModel.PK_SUKIEN_LOAISUKIEN" FromRole="LOAISUKIEN" ToRole="SUKIEN" />
+  </EntityType>
+  <EntityType Name="MATHANG">
+    <Key>
+      <PropertyRef Name="MSMH" />
+    </Key>
+    <Property Name="MSMH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENMH" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SIZE" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="GIABAN" Type="Int32" Nullable="false" />
+    <Property Name="MSLMH" Type="Int32" Nullable="false" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="LOAIMATHANG" Relationship="QLTSModel.PK_MATHANG_LOAIMATHANG" FromRole="MATHANG" ToRole="LOAIMATHANG" />
+  </EntityType>
+  <EntityType Name="NGUYENLIEU">
+    <Key>
+      <PropertyRef Name="MSNL" />
+    </Key>
+    <Property Name="MSNL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENNL" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DVT" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="GIABAN" Type="Int32" Nullable="false" />
+    <Property Name="MSNCC" Type="Int32" Nullable="false" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CHITIETPHIEUNHAPs" Relationship="QLTSModel.PK_CHITIETPHIEUNHAP_NGUYENLIEU" FromRole="NGUYENLIEU" ToRole="CHITIETPHIEUNHAP" />
+    <NavigationProperty Name="CHITIETPHIEUXUATs" Relationship="QLTSModel.PK_CHITIETPHIEUXUAT_NGUYENLIEU" FromRole="NGUYENLIEU" ToRole="CHITIETPHIEUXUAT" />
+    <NavigationProperty Name="NHACUNGCAP" Relationship="QLTSModel.PK_NGUYENLIEU_NHACUNGCAP" FromRole="NGUYENLIEU" ToRole="NHACUNGCAP" />
+  </EntityType>
+  <EntityType Name="NHACUNGCAP">
+    <Key>
+      <PropertyRef Name="MSNCC" />
+    </Key>
+    <Property Name="MSNCC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENNCC" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHI" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="NGUYENLIEUx" Relationship="QLTSModel.PK_NGUYENLIEU_NHACUNGCAP" FromRole="NHACUNGCAP" ToRole="NGUYENLIEU" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MSNV" />
+    </Key>
+    <Property Name="MSNV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TENNV" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GIOITINH" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYSINH" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CMND" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHI" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYVAOLAM" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CHUCVU" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MSCLV" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TIENLUONG" Type="Int32" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <Property Name="ROLE" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="CALAMVIEC" Relationship="QLTSModel.PK_NHANVIEN_CALAMVIEC" FromRole="NHANVIEN" ToRole="CALAMVIEC" />
+    <NavigationProperty Name="CHECKINGIOLAMVIECs" Relationship="QLTSModel.PK_NHANVIEN_CHECKINGIOLAMVIEC" FromRole="NHANVIEN" ToRole="CHECKINGIOLAMVIEC" />
+    <NavigationProperty Name="HOADONs" Relationship="QLTSModel.PK_HOADON_NHANVIEN" FromRole="NHANVIEN" ToRole="HOADON" />
+    <NavigationProperty Name="ROLE1" Relationship="QLTSModel.PK_NHANVIEN_ROLE" FromRole="NHANVIEN" ToRole="ROLE" />
+    <NavigationProperty Name="TAIKHOAN" Relationship="QLTSModel.PK_NHANVIEN_TAIKHOAN" FromRole="NHANVIEN" ToRole="TAIKHOAN" />
+    <NavigationProperty Name="PHIEUNHAPs" Relationship="QLTSModel.PK_PHIEUNHAP_NHANVIEN" FromRole="NHANVIEN" ToRole="PHIEUNHAP" />
+    <NavigationProperty Name="PHIEUXUATs" Relationship="QLTSModel.PK_PHIEUXUAT_NHANVIEN" FromRole="NHANVIEN" ToRole="PHIEUXUAT" />
+  </EntityType>
+  <EntityType Name="PHIEUNHAP">
+    <Key>
+      <PropertyRef Name="MSPN" />
+    </Key>
+    <Property Name="MSPN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MSNV" Type="Int32" Nullable="false" />
+    <Property Name="TONGTIEN" Type="Int32" Nullable="false" />
+    <Property Name="NGAYNHAP" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRANGTHAI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NOTE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHITIETPHIEUNHAPs" Relationship="QLTSModel.PK_CHITIETPHIEUNHAP_PHIEUNHAP" FromRole="PHIEUNHAP" ToRole="CHITIETPHIEUNHAP" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QLTSModel.PK_PHIEUNHAP_NHANVIEN" FromRole="PHIEUNHAP" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="PHIEUXUAT">
+    <Key>
+      <PropertyRef Name="MSPX" />
+    </Key>
+    <Property Name="MSPX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MSNV" Type="Int32" Nullable="false" />
+    <Property Name="NGAYXUAT" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NOTE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHITIETPHIEUXUATs" Relationship="QLTSModel.PK_CHITIETPHIEUXUAT_PHIEUXUAT" FromRole="PHIEUXUAT" ToRole="CHITIETPHIEUXUAT" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QLTSModel.PK_PHIEUXUAT_NHANVIEN" FromRole="PHIEUXUAT" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="ROLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ROLE1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NHANVIENs" Relationship="QLTSModel.PK_NHANVIEN_ROLE" FromRole="ROLE" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="SUKIEN">
+    <Key>
+      <PropertyRef Name="MASK" />
+    </Key>
+    <Property Name="MASK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENSK" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NDSUKIEN" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="DIEMTT" Type="Int32" Nullable="false" />
+    <Property Name="GIAMGIA" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <Property Name="MLSK" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="HOADONSUKIENs" Relationship="QLTSModel.PK_SUKIEN_HOADONSUKIEN" FromRole="SUKIEN" ToRole="HOADONSUKIEN" />
+    <NavigationProperty Name="LOAISUKIEN" Relationship="QLTSModel.PK_SUKIEN_LOAISUKIEN" FromRole="SUKIEN" ToRole="LOAISUKIEN" />
+  </EntityType>
+  <EntityType Name="TAIKHOAN">
+    <Key>
+      <PropertyRef Name="USERNAME" />
+    </Key>
+    <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="NHANVIENs" Relationship="QLTSModel.PK_NHANVIEN_TAIKHOAN" FromRole="TAIKHOAN" ToRole="NHANVIEN" />
+  </EntityType>
+  <Association Name="PK_NHANVIEN_CALAMVIEC">
+    <End Type="QLTSModel.CALAMVIEC" Role="CALAMVIEC" Multiplicity="1" />
+    <End Type="QLTSModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CALAMVIEC">
+        <PropertyRef Name="MSCLV" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MSCLV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_NHANVIEN_CHECKINGIOLAMVIEC">
+    <End Type="QLTSModel.NHANVIEN" Role="NHANVIEN" Multiplicity="1" />
+    <End Type="QLTSModel.CHECKINGIOLAMVIEC" Role="CHECKINGIOLAMVIEC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MSNV" />
+      </Principal>
+      <Dependent Role="CHECKINGIOLAMVIEC">
+        <PropertyRef Name="MSNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CHITIETHOADON_HOADON">
+    <End Type="QLTSModel.HOADON" Role="HOADON" Multiplicity="1" />
+    <End Type="QLTSModel.CHITIETHOADON" Role="CHITIETHOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="MSHD" />
+      </Principal>
+      <Dependent Role="CHITIETHOADON">
+        <PropertyRef Name="MSHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CHITIETPHIEUNHAP_KHO">
+    <End Type="QLTSModel.KHO" Role="KHO" Multiplicity="1" />
+    <End Type="QLTSModel.CHITIETPHIEUNHAP" Role="CHITIETPHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHO">
+        <PropertyRef Name="MSKHO" />
+      </Principal>
+      <Dependent Role="CHITIETPHIEUNHAP">
+        <PropertyRef Name="MSKHO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CHITIETPHIEUNHAP_NGUYENLIEU">
+    <End Type="QLTSModel.NGUYENLIEU" Role="NGUYENLIEU" Multiplicity="1" />
+    <End Type="QLTSModel.CHITIETPHIEUNHAP" Role="CHITIETPHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGUYENLIEU">
+        <PropertyRef Name="MSNL" />
+      </Principal>
+      <Dependent Role="CHITIETPHIEUNHAP">
+        <PropertyRef Name="MSNL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CHITIETPHIEUNHAP_PHIEUNHAP">
+    <End Type="QLTSModel.PHIEUNHAP" Role="PHIEUNHAP" Multiplicity="1" />
+    <End Type="QLTSModel.CHITIETPHIEUNHAP" Role="CHITIETPHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUNHAP">
+        <PropertyRef Name="MSPN" />
+      </Principal>
+      <Dependent Role="CHITIETPHIEUNHAP">
+        <PropertyRef Name="MSPN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CHITIETPHIEUXUAT_KHO">
+    <End Type="QLTSModel.KHO" Role="KHO" Multiplicity="1" />
+    <End Type="QLTSModel.CHITIETPHIEUXUAT" Role="CHITIETPHIEUXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHO">
+        <PropertyRef Name="MSKHO" />
+      </Principal>
+      <Dependent Role="CHITIETPHIEUXUAT">
+        <PropertyRef Name="MSKHO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CHITIETPHIEUXUAT_NGUYENLIEU">
+    <End Type="QLTSModel.NGUYENLIEU" Role="NGUYENLIEU" Multiplicity="1" />
+    <End Type="QLTSModel.CHITIETPHIEUXUAT" Role="CHITIETPHIEUXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGUYENLIEU">
+        <PropertyRef Name="MSNL" />
+      </Principal>
+      <Dependent Role="CHITIETPHIEUXUAT">
+        <PropertyRef Name="MSNL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CHITIETPHIEUXUAT_PHIEUXUAT">
+    <End Type="QLTSModel.PHIEUXUAT" Role="PHIEUXUAT" Multiplicity="1" />
+    <End Type="QLTSModel.CHITIETPHIEUXUAT" Role="CHITIETPHIEUXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUXUAT">
+        <PropertyRef Name="MSPX" />
+      </Principal>
+      <Dependent Role="CHITIETPHIEUXUAT">
+        <PropertyRef Name="MSPX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_HOADON_HOADONSUKIEN">
+    <End Type="QLTSModel.HOADON" Role="HOADON" Multiplicity="1" />
+    <End Type="QLTSModel.HOADONSUKIEN" Role="HOADONSUKIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="MSHD" />
+      </Principal>
+      <Dependent Role="HOADONSUKIEN">
+        <PropertyRef Name="MSHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_HOADON_KHACHHANG">
+    <End Type="QLTSModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
+    <End Type="QLTSModel.HOADON" Role="HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="SDT" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="SDT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_HOADON_NHANVIEN">
+    <End Type="QLTSModel.NHANVIEN" Role="NHANVIEN" Multiplicity="1" />
+    <End Type="QLTSModel.HOADON" Role="HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MSNV" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="MSNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_SUKIEN_HOADONSUKIEN">
+    <End Type="QLTSModel.SUKIEN" Role="SUKIEN" Multiplicity="1" />
+    <End Type="QLTSModel.HOADONSUKIEN" Role="HOADONSUKIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUKIEN">
+        <PropertyRef Name="MASK" />
+      </Principal>
+      <Dependent Role="HOADONSUKIEN">
+        <PropertyRef Name="MASK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_MATHANG_LOAIMATHANG">
+    <End Type="QLTSModel.LOAIMATHANG" Role="LOAIMATHANG" Multiplicity="1" />
+    <End Type="QLTSModel.MATHANG" Role="MATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIMATHANG">
+        <PropertyRef Name="MSLMH" />
+      </Principal>
+      <Dependent Role="MATHANG">
+        <PropertyRef Name="MSLMH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_SUKIEN_LOAISUKIEN">
+    <End Type="QLTSModel.LOAISUKIEN" Role="LOAISUKIEN" Multiplicity="1" />
+    <End Type="QLTSModel.SUKIEN" Role="SUKIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAISUKIEN">
+        <PropertyRef Name="MLSK" />
+      </Principal>
+      <Dependent Role="SUKIEN">
+        <PropertyRef Name="MLSK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_NGUYENLIEU_NHACUNGCAP">
+    <End Type="QLTSModel.NHACUNGCAP" Role="NHACUNGCAP" Multiplicity="1" />
+    <End Type="QLTSModel.NGUYENLIEU" Role="NGUYENLIEU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHACUNGCAP">
+        <PropertyRef Name="MSNCC" />
+      </Principal>
+      <Dependent Role="NGUYENLIEU">
+        <PropertyRef Name="MSNCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_NHANVIEN_ROLE">
+    <End Type="QLTSModel.ROLE" Role="ROLE" Multiplicity="1" />
+    <End Type="QLTSModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="ROLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_NHANVIEN_TAIKHOAN">
+    <End Type="QLTSModel.TAIKHOAN" Role="TAIKHOAN" Multiplicity="0..1" />
+    <End Type="QLTSModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAIKHOAN">
+        <PropertyRef Name="USERNAME" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="USERNAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_PHIEUNHAP_NHANVIEN">
+    <End Type="QLTSModel.NHANVIEN" Role="NHANVIEN" Multiplicity="1" />
+    <End Type="QLTSModel.PHIEUNHAP" Role="PHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MSNV" />
+      </Principal>
+      <Dependent Role="PHIEUNHAP">
+        <PropertyRef Name="MSNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_PHIEUXUAT_NHANVIEN">
+    <End Type="QLTSModel.NHANVIEN" Role="NHANVIEN" Multiplicity="1" />
+    <End Type="QLTSModel.PHIEUXUAT" Role="PHIEUXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MSNV" />
+      </Principal>
+      <Dependent Role="PHIEUXUAT">
+        <PropertyRef Name="MSNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="decfed6426d848de9c642e16f1405558" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="QLTSModel.CALAMVIEC" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="QLTSModel.CHECKINGIOLAMVIEC" Width="1.5" PointX="5.25" PointY="14.75" />
+        <EntityTypeShape EntityType="QLTSModel.CHITIETHOADON" Width="1.5" PointX="10.5" PointY="11.75" />
+        <EntityTypeShape EntityType="QLTSModel.CHITIETPHIEUNHAP" Width="1.5" PointX="7.5" PointY="4.5" />
+        <EntityTypeShape EntityType="QLTSModel.CHITIETPHIEUXUAT" Width="1.5" PointX="7.5" PointY="12.75" />
+        <EntityTypeShape EntityType="QLTSModel.HOADON" Width="1.5" PointX="8.25" PointY="8.25" />
+        <EntityTypeShape EntityType="QLTSModel.HOADONSUKIEN" Width="1.5" PointX="10.5" PointY="8.75" />
+        <EntityTypeShape EntityType="QLTSModel.KHACHHANG" Width="1.5" PointX="6" PointY="8.75" />
+        <EntityTypeShape EntityType="QLTSModel.KHO" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="QLTSModel.LOAIMATHANG" Width="1.5" PointX="7.75" PointY="1.25" />
+        <EntityTypeShape EntityType="QLTSModel.LOAISUKIEN" Width="1.5" PointX="6" PointY="23" />
+        <EntityTypeShape EntityType="QLTSModel.MATHANG" Width="1.5" PointX="10" PointY="1" />
+        <EntityTypeShape EntityType="QLTSModel.NGUYENLIEU" Width="1.5" PointX="5.25" PointY="18.75" />
+        <EntityTypeShape EntityType="QLTSModel.NHACUNGCAP" Width="1.5" PointX="3" PointY="19" />
+        <EntityTypeShape EntityType="QLTSModel.NHANVIEN" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="QLTSModel.PHIEUNHAP" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="QLTSModel.PHIEUXUAT" Width="1.5" PointX="5.25" PointY="11.875" />
+        <EntityTypeShape EntityType="QLTSModel.ROLE" Width="1.5" PointX="0.75" PointY="11.375" />
+        <EntityTypeShape EntityType="QLTSModel.SUKIEN" Width="1.5" PointX="8.25" PointY="22.5" />
+        <EntityTypeShape EntityType="QLTSModel.TAIKHOAN" Width="1.5" PointX="0.75" PointY="8" />
+        <AssociationConnector Association="QLTSModel.PK_NHANVIEN_CALAMVIEC" />
+        <AssociationConnector Association="QLTSModel.PK_NHANVIEN_CHECKINGIOLAMVIEC" />
+        <AssociationConnector Association="QLTSModel.PK_CHITIETHOADON_HOADON" />
+        <AssociationConnector Association="QLTSModel.PK_CHITIETPHIEUNHAP_KHO" />
+        <AssociationConnector Association="QLTSModel.PK_CHITIETPHIEUNHAP_NGUYENLIEU" />
+        <AssociationConnector Association="QLTSModel.PK_CHITIETPHIEUNHAP_PHIEUNHAP" />
+        <AssociationConnector Association="QLTSModel.PK_CHITIETPHIEUXUAT_KHO" />
+        <AssociationConnector Association="QLTSModel.PK_CHITIETPHIEUXUAT_NGUYENLIEU" />
+        <AssociationConnector Association="QLTSModel.PK_CHITIETPHIEUXUAT_PHIEUXUAT" />
+        <AssociationConnector Association="QLTSModel.PK_HOADON_HOADONSUKIEN" />
+        <AssociationConnector Association="QLTSModel.PK_HOADON_KHACHHANG" />
+        <AssociationConnector Association="QLTSModel.PK_HOADON_NHANVIEN" />
+        <AssociationConnector Association="QLTSModel.PK_SUKIEN_HOADONSUKIEN" />
+        <AssociationConnector Association="QLTSModel.PK_MATHANG_LOAIMATHANG" />
+        <AssociationConnector Association="QLTSModel.PK_SUKIEN_LOAISUKIEN" />
+        <AssociationConnector Association="QLTSModel.PK_NGUYENLIEU_NHACUNGCAP" />
+        <AssociationConnector Association="QLTSModel.PK_NHANVIEN_ROLE" />
+        <AssociationConnector Association="QLTSModel.PK_NHANVIEN_TAIKHOAN" />
+        <AssociationConnector Association="QLTSModel.PK_PHIEUNHAP_NHANVIEN" />
+        <AssociationConnector Association="QLTSModel.PK_PHIEUXUAT_NHANVIEN" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

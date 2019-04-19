@@ -1,0 +1,118 @@
+﻿<Window x:Class="QuanLyTraSua.LichSuXoaSuKien"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyTraSua"
+        mc:Ignorable="d"
+       
+        
+        xmlns:uc="clr-namespace:QuanLyTraSua.UserControlQLTS"
+        DataContext="{StaticResource LichSuXoaSKVM}"
+        xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
+        Title="Lịch Sử Xoá Sự Kiện"  Height="750" Width="700"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" 
+        ResizeMode="NoResize"
+        WindowStyle="None"  
+        BorderBrush="Black"
+        BorderThickness="0.4"
+        WindowStartupLocation="CenterScreen"
+        Name="lichSuXoaSKWindow">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedLichSuXoaSuKienWindowCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Grid">
+                <Setter Property="Margin" Value="0"></Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" >
+            <uc:ControlBarUC Height="auto" Width="auto" Tag="{Binding Title,ElementName=lichSuXoaKHWindow}" Margin="276,0,0.4,-0.2" ></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" Text="Sự Kiện Đã Xoá Gần Đây" FontSize="40" FontWeight="Black" Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBox>
+            <Grid Grid.Row="1" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <materialDesign:Card Grid.Row="0" Margin="15">
+                        <WrapPanel  Orientation="Horizontal" Margin="10"> 
+                            <TextBox IsReadOnly="True" Text="{Binding TENSK, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Tên Sự Kiện" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="200" Margin="5 5 15 5" ></TextBox>
+                            <TextBox IsReadOnly="True" Text="{Binding DIEMTTEVENT, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Điểm Thân Thiết" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="100" Margin="5 5 15 5" ></TextBox>
+                            <TextBox IsReadOnly="True" Text="{Binding GIAMGIAEVENT, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="% Khuyến Mãi" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="100" Margin="5 5 15 5" ></TextBox>
+                            <ComboBox IsReadOnly="True" materialDesign:HintAssist.Hint="Loại Sự Kiện" ItemsSource="{Binding TenLoaiSuKienList}" SelectedItem="{Binding SelectedLoaiSuKien}" Width="220" Margin="10 5 10 5" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                            <TextBox IsReadOnly="True" Text="{Binding CONTENT, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Nội dung sự kiện" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="600" Height="auto" Margin="5 5 15 10" ></TextBox>
+                        </WrapPanel>
+                    </materialDesign:Card>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="FontSize" Value="20"></Setter>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                <Setter Property="Height" Value="60"></Setter>
+                                <Setter Property="Width" Value="200"></Setter>
+                                <Setter Property="Margin" Value="15"></Setter>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Button  ToolTip="Restore sự kiện đã xoá" Command="{Binding RestoreSKCommand}"  Background="#FF8A00">
+                            <TextBlock Text="Restore Sự Kiện" TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
+                        </Button>
+                        <Button ToolTip="Get All" Command="{Binding GetAllEventCommand}"  Background="#89ffaa">
+                            <TextBlock Text="Lấy Tất Cả Event" TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
+                        </Button>
+                    </StackPanel>
+                    <Grid Grid.Row="2" Margin="0">
+                        <TextBox ToolTip="Tìm kiếm sự kiện theo tên" Name="suKienSearch" Text="{Binding SearchEvent}" materialDesign:HintAssist.Hint="Tìm Kiếm Sự Kiện" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Width="auto" Margin="15" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="KeyUp">
+                                    <i:InvokeCommandAction Command="{Binding OnKeyUpSuKienSearchCommand}" CommandParameter="{Binding ElementName=suKienSearch}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </Grid>
+                    <materialDesign:Card ToolTip="Thông tin sự kiện đã xoá" Grid.Row="3" Margin="15" Height="auto" MaxHeight="350" VerticalContentAlignment="Stretch" >
+                        <ScrollViewer VerticalScrollBarVisibility="Disabled">
+                            <ListView ItemsSource="{Binding SuKienList}" SelectedItem="{Binding SelectedItemSuKien,Mode=OneWayToSource}">
+                                <ListView.View>
+                                    <GridView AllowsColumnReorder="True">
+                                        <GridViewColumn Header="Tên SK" DisplayMemberBinding="{Binding SUKIEN.TENSK}"></GridViewColumn>
+                                        <GridViewColumn Header="Loại SK" DisplayMemberBinding="{Binding TENLSK}"></GridViewColumn>
+                                        <GridViewColumn Header="Điểm TT" DisplayMemberBinding="{Binding SUKIEN.DIEMTT}"></GridViewColumn>
+                                        <GridViewColumn Header="Giảm Giá" DisplayMemberBinding="{Binding SUKIEN.GIAMGIA}"></GridViewColumn>
+                                        <GridViewColumn Header="Nội dung" DisplayMemberBinding="{Binding SUKIEN.NDSUKIEN}"></GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

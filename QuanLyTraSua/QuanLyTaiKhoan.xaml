@@ -1,0 +1,109 @@
+﻿<Window x:Class="QuanLyTraSua.QuanLyTaiKhoan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyTraSua"
+        mc:Ignorable="d"
+       
+        
+        xmlns:uc="clr-namespace:QuanLyTraSua.UserControlQLTS"
+        DataContext="{StaticResource QuanLyTKVM}"
+        xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
+        Title="Quản Lý Tài Khoản"  Height="800" Width="550"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" 
+        ResizeMode="NoResize"
+        WindowStyle="None"  
+        BorderBrush="Black"
+        BorderThickness="0.4"
+        WindowStartupLocation="CenterScreen"
+        Name="quanLyTKWindow">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedQuanLyTaiKhoanWindowCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Grid">
+                <Setter Property="Margin" Value="0"></Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" >
+            <uc:ControlBarUC Height="auto" Width="auto" Tag="{Binding Title,ElementName=quanLyTKWindow}" Margin="276,0,0.4,-0.2" ></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" Text="Quản Lý Tài Khoản" FontSize="40" FontWeight="Black" Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBox>
+            <materialDesign:Card Grid.Row="1"  Margin="15" >
+                <WrapPanel Orientation="Horizontal" Margin="0 20 0 20">
+                    <TextBox IsReadOnly="True" Text="{Binding USERNAME}" materialDesign:HintAssist.Hint="UserName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="200" Margin="15" ></TextBox>
+                    <TextBox IsReadOnly="True" Text="{Binding ACTIVE}" materialDesign:HintAssist.Hint="Active" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="100" Margin="15" ></TextBox>
+                </WrapPanel>
+            </materialDesign:Card>
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="FontSize" Value="20"></Setter>
+                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                        <Setter Property="Height" Value="60"></Setter>
+                        <Setter Property="Width" Value="100"></Setter>
+                        <Setter Property="Margin" Value="15"></Setter>
+                    </Style>
+                </StackPanel.Resources>
+                <Button ToolTip="Get All" Command="{Binding GetAllCommand}"  Background="#89ffaa">
+                    <TextBlock Text="Lấy Tất Cả" TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
+                </Button>
+                <Button ToolTip="Làm mới ô thông tin tài khoản"  Command="{Binding RefreshCommand}"  Background="#89ffaa">
+                    <TextBlock Text="Refresh" TextWrapping="Wrap"  TextAlignment="Center"></TextBlock>
+                </Button>
+                <Button ToolTip="Kích hoạt tài khoản" Command="{Binding ActiveCommand}"  Background="#FF8A00">
+                    <TextBlock Text="Active" TextWrapping="Wrap"  TextAlignment="Center"></TextBlock>
+                </Button>
+                <Button ToolTip="Tắt kích hoạt tài khoản" Command="{Binding InActiveCommand}"  Background="#FF6969">
+                    <TextBlock Text="In Active" TextWrapping="Wrap"  TextAlignment="Center"></TextBlock>
+                </Button>
+            </StackPanel>
+            <Grid Grid.Row="3" Margin="0">
+                <TextBox ToolTip="Tìm kiếm tài khoản theo username" Name="taiKhoanSearch" materialDesign:HintAssist.Hint="Tìm Kiếm Theo UserName" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Width="auto" Margin="15" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="KeyUp">
+                            <i:InvokeCommandAction Command="{Binding OnKeyUpTaiKhoanSearchCommand}" CommandParameter="{Binding ElementName=taiKhoanSearch}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+            </Grid>
+            <materialDesign:Card ToolTip="Thông tin tài khoản" Grid.Row="4" Margin="15,10.6,14.8,15"  VerticalContentAlignment="Stretch"  MaxHeight="350" Height="350" >
+                <ScrollViewer VerticalScrollBarVisibility="Disabled" Height="auto">
+                    <ListView ItemsSource="{Binding TaiKhoanList}" SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}">
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="True">
+                                <GridViewColumn Header="USERNAME" DisplayMemberBinding="{Binding USERNAME}"></GridViewColumn>
+                                <GridViewColumn Header="ACTIVE" DisplayMemberBinding="{Binding ACTIVE}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</Window>

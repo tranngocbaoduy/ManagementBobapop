@@ -1,0 +1,109 @@
+﻿<Window x:Class="QuanLyTraSua.LichSuXuatKho"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyTraSua"
+        mc:Ignorable="d"
+       
+        
+        xmlns:uc="clr-namespace:QuanLyTraSua.UserControlQLTS"
+        DataContext="{StaticResource LichSuXuatKhoVM}"
+        xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
+        Title="Lịch Sử Xuất kho"  Height="800" Width="1400"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" 
+        ResizeMode="NoResize"
+        WindowStyle="None"  
+        BorderBrush="Black"
+        BorderThickness="0.4"
+        WindowStartupLocation="CenterScreen"
+        Name="lichSuXuatKhoWindow">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedPhieuXuatWindowCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Grid">
+                <Setter Property="Margin" Value="0"></Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" >
+            <uc:ControlBarUC Height="auto" Width="auto" Tag="{Binding Title,ElementName=loginWindow}" Margin="276,0,0.4,-0.2" ></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.25*"></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" Text="Lịch Sử Xuất Kho" FontSize="40" FontWeight="Black" Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBox>
+            <materialDesign:Card Grid.Row="1" Margin="15,10.6,14.8,0" VerticalAlignment="Stretch" >
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="FontSize" Value="20"></Setter>
+                            <Setter Property="FontWeight" Value="Bold"></Setter>
+                            <Setter Property="Height" Value="60"></Setter>
+                            <Setter Property="Margin" Value="15"></Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <DatePicker ToolTip="Xem từ ngày" Width="120" Height="40" SelectedDate="{Binding NGAYBATDAU}"  materialDesign:HintAssist.Hint="Ngày Bắt Đầu" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  Margin="15 5 15 5" />
+                    <DatePicker ToolTip="Xem đến ngày" Width="120" Height="40" SelectedDate="{Binding NGAYKETTHUC}"  materialDesign:HintAssist.Hint="Ngày kết thúc" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  Margin="15 5 15 5" />
+                    <Button ToolTip="Get All" Command="{Binding GetAllCommand}" Background="#FF8A00" Content="Xem Tất Cả"   Width="200" ></Button>
+                </StackPanel>
+            </materialDesign:Card>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <materialDesign:Card ToolTip="Thông tin xuất kho" Grid.Column="0" Margin="15 15 7 15" VerticalAlignment="Stretch" >
+                    <ScrollViewer VerticalScrollBarVisibility="Disabled">
+                        <ListView ItemsSource="{Binding PhieuXuatKhoList}" SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}" SelectionChanged="ListView_SelectionChanged">
+                            <ListView.View >
+                                <GridView>
+                                    <GridViewColumn Header="Mã PX" DisplayMemberBinding="{Binding MSPX}"></GridViewColumn>
+                                    <GridViewColumn Header="Mã NV Xuất" DisplayMemberBinding="{Binding MSNV}"></GridViewColumn>
+                                    <GridViewColumn Header="Ngày Xuất" DisplayMemberBinding="{Binding NGAYXUAT}"></GridViewColumn>
+                                    <GridViewColumn Header="Trạng Thái" DisplayMemberBinding="{Binding NOTE}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </ScrollViewer>
+                </materialDesign:Card>
+
+                <materialDesign:Card Grid.Column="1" Margin="7 15 15 15" VerticalAlignment="Stretch" >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                        <ListView ItemsSource="{Binding ChiTietPhieuXuatKhoList}">
+
+                            <ListView.View >
+                                <GridView>
+                                    <GridViewColumn Header="Mã Nguyên Liệu" DisplayMemberBinding="{Binding CHITIETPHIEUXUAT.MSNL}"></GridViewColumn>
+                                    <GridViewColumn Header="Tên Nguyên Liệu" DisplayMemberBinding="{Binding TENNL}"></GridViewColumn>
+                                    <GridViewColumn Header="Số Lượng" DisplayMemberBinding="{Binding CHITIETPHIEUXUAT.SOLUONG}"></GridViewColumn>
+                                    <GridViewColumn Header="Mã Kho" DisplayMemberBinding="{Binding CHITIETPHIEUXUAT.MSKHO}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </ScrollViewer>
+                </materialDesign:Card>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

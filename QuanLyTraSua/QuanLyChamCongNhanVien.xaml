@@ -1,0 +1,206 @@
+﻿<Window x:Class="QuanLyTraSua.QuanLyChamCongNhanVien"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyTraSua"
+        xmlns:uc="clr-namespace:QuanLyTraSua.UserControlQLTS"
+        mc:Ignorable="d"
+        Title="Quản Lý Chấm Công Nhân Viên" Height="800" Width="1400"
+        
+        
+        DataContext="{StaticResource QuanLyChamCongVM}"
+        xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        BorderBrush="Black"
+        BorderThickness="0.4"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" 
+        ResizeMode="NoResize"
+        WindowStyle="None"  
+        WindowStartupLocation="CenterScreen"
+        Name="quanLyChamCongWindow"
+       >
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedQuanLyChamCongWindowCommand}" CommandParameter="{Binding ElementName=quanLyChamCongWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Height="auto" Tag="{Binding Title,ElementName=quanLyChamCongWindow}" Margin="275,0,0,0" ></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <!--<ColumnDefinition></ColumnDefinition>-->
+            </Grid.ColumnDefinitions>
+            <!--Navigation Left-->
+
+            <!--<Grid Grid.Column="0">
+                <uc:NavigationControl Width="auto"></uc:NavigationControl>
+            </Grid>-->
+
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0"  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontWeight="ExtraBold" HorizontalAlignment="Center" Foreground="Red"  FontFamily="Tahoma" Text="QL Chấm Công"  FontSize="45" VerticalAlignment="Center" ></TextBlock>
+                    <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0.35 0 0.35 0">
+                        <StackPanel Orientation="Horizontal" >
+                            <StackPanel.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="FontSize" Value="15"></Setter>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                    <Setter Property="Margin" Value="18 10 10 10"></Setter>
+                                    <Setter Property="Width" Value="140"></Setter>
+                                    <Setter Property="Height" Value="60"></Setter>
+                                    <Setter Property="Background" Value="#fffda8"></Setter>
+                                </Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Width" Value="auto"></Setter>
+                                    <Setter Property="FontSize" Value="15"></Setter>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                    <Setter Property="Foreground" Value="Red"></Setter>
+                                    <Setter Property="Margin" Value="5 10 5 5"></Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Button Visibility="Hidden" >
+                                <TextBlock TextWrapping="Wrap"  Text="CHẤM CÔNG NHÂN VIÊN"  TextAlignment="Center" ></TextBlock>
+                            </Button>
+                            <Button Visibility="Hidden"  >
+                                <TextBlock TextWrapping="Wrap"  Text="LỊCH SỬ XOÁ NHÂN VIÊN"   TextAlignment="Center"></TextBlock>
+                            </Button>
+                            <Button Visibility="Hidden"  >
+                                <TextBlock TextWrapping="Wrap"  Text="QUẢN LÝ TÀI KHOẢN" TextAlignment="Center"></TextBlock>
+                            </Button>
+                            <Button Visibility="Hidden" >
+                                <TextBlock TextWrapping="Wrap"  Text="LỊCH SỬ XOÁ SỰ KIỆN" Width="100" TextAlignment="Center"></TextBlock>
+                            </Button>
+                            <StackPanel ToolTip="Chú thích" Orientation="Vertical" >
+                                <TextBlock Text="*  0: Không Làm"></TextBlock>
+                                <TextBlock Text="*  1: Có Checkin Giờ Vào Ca"></TextBlock>
+                                <TextBlock Text="*  2: Có Checkin Giờ Ra Ca"></TextBlock>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" ></RowDefinition>
+                            <RowDefinition Height="auto" ></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <materialDesign:Card Grid.Row="0" Margin="15 15 15 15"  VerticalContentAlignment="Stretch"  >
+                            <DatePicker ToolTip="Chọn tháng năm để xem chấm công"  SelectedDate="{Binding ThangNam}" Width="220"  materialDesign:HintAssist.Hint="Tháng - Năm" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  Margin="10 5 10 5" />
+                        </materialDesign:Card>
+                        <materialDesign:Card Grid.Row="1" Margin="15 15 15 15"  VerticalContentAlignment="Stretch"  >
+                            <TextBox ToolTip="Chấm công của tháng năm này" IsReadOnly="True" Text="{Binding ThangNamText}" materialDesign:HintAssist.Hint="Lương Của Tháng - Năm" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="200" Margin="15"></TextBox>
+                        </materialDesign:Card>
+                        <materialDesign:Card ToolTip="Thông tin những ngày vào trễ" Grid.Row="2" Margin="15">
+                            <ScrollViewer Canvas.Top="0" VerticalScrollBarVisibility="Auto" Height="auto">
+                                <ListView ItemsSource="{Binding NgayTreList}" >
+                                    <ListView.View>
+                                        <GridView AllowsColumnReorder="True">
+                                            <GridViewColumn Header="Ngày Vào Trễ" ></GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </ScrollViewer>
+                        </materialDesign:Card>
+                        <materialDesign:Card ToolTip="Thông tin những ngày ra sớm" Grid.Row="3" Margin="15"  VerticalContentAlignment="Stretch"  >
+                            <ScrollViewer  VerticalScrollBarVisibility="Auto" Height="auto">
+                                <ListView ItemsSource="{Binding NgaySomList}" >
+                                    <ListView.View>
+                                        <GridView AllowsColumnReorder="True">
+                                            <GridViewColumn Header="Ngày Ra Sớm" DisplayMemberBinding="{Binding }"></GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </ScrollViewer>
+                        </materialDesign:Card>
+                    </Grid>
+
+                    <materialDesign:Card ToolTip="Thông tin chấm công" Grid.Column="1" Margin="15" Width="auto" Height="auto" MaxHeight="600">
+                        <ScrollViewer VerticalScrollBarVisibility="Disabled" Height="auto" Width="auto" >
+                            <ListView Width="auto" ItemsSource="{Binding QuanLyChamCongNhanVienList}" SelectedItem="{Binding SelectedItem}">
+                                <ListView.View>
+                                    <GridView AllowsColumnReorder="False">
+                                        <GridViewColumn Header="Họ Tên" DisplayMemberBinding="{Binding TenNV}"></GridViewColumn>
+                                        <GridViewColumn Header="Lương Cơ bản" DisplayMemberBinding="{Binding LuongCoBan}"></GridViewColumn>
+                                        <GridViewColumn Header="Lương Được Nhận" DisplayMemberBinding="{Binding Luong}"></GridViewColumn>
+                                        <GridViewColumn Header="Số ngày làm" DisplayMemberBinding="{Binding SoNgayLam}"></GridViewColumn>
+                                        <GridViewColumn Header="Trễ" DisplayMemberBinding="{Binding SoNgayTre}"></GridViewColumn>
+                                        <GridViewColumn Header="Sớm" DisplayMemberBinding="{Binding SoNgaySom}"></GridViewColumn>
+
+                                        <GridViewColumn Header="1" DisplayMemberBinding="{Binding CheckinList[0].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="2" DisplayMemberBinding="{Binding CheckinList[1].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="3" DisplayMemberBinding="{Binding CheckinList[2].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="4" DisplayMemberBinding="{Binding CheckinList[3].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="5" DisplayMemberBinding="{Binding CheckinList[4].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="6" DisplayMemberBinding="{Binding CheckinList[5].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="7" DisplayMemberBinding="{Binding CheckinList[6].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="8" DisplayMemberBinding="{Binding CheckinList[7].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="9" DisplayMemberBinding="{Binding CheckinList[8].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="10" DisplayMemberBinding="{Binding CheckinList[9].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="11" DisplayMemberBinding="{Binding CheckinList[10].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="12" DisplayMemberBinding="{Binding CheckinList[11].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="13" DisplayMemberBinding="{Binding CheckinList[12].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="14" DisplayMemberBinding="{Binding CheckinList[13].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="15" DisplayMemberBinding="{Binding CheckinList[14].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="16" DisplayMemberBinding="{Binding CheckinList[15].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="17" DisplayMemberBinding="{Binding CheckinList[16].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="18" DisplayMemberBinding="{Binding CheckinList[17].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="19" DisplayMemberBinding="{Binding CheckinList[18].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="20" DisplayMemberBinding="{Binding CheckinList[19].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="21" DisplayMemberBinding="{Binding CheckinList[20].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="22" DisplayMemberBinding="{Binding CheckinList[21].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="23" DisplayMemberBinding="{Binding CheckinList[22].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="24" DisplayMemberBinding="{Binding CheckinList[23].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="25" DisplayMemberBinding="{Binding CheckinList[24].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="26" DisplayMemberBinding="{Binding CheckinList[25].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="27" DisplayMemberBinding="{Binding CheckinList[26].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="28" DisplayMemberBinding="{Binding CheckinList[27].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="29" DisplayMemberBinding="{Binding CheckinList[28].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="30" DisplayMemberBinding="{Binding CheckinList[29].TRANGTHAI}" ></GridViewColumn>
+                                        <GridViewColumn Header="31" DisplayMemberBinding="{Binding CheckinList[30].TRANGTHAI}" ></GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

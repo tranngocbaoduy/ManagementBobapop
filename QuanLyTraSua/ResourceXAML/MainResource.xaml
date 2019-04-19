@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:viewmodel="clr-namespace:QuanLyTraSua.ViewModel"
+                    xmlns:local="clr-namespace:QuanLyTraSua.ResourceXAML">
+    <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
+    <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
+    <viewmodel:ChangePasswordViewModel x:Key="ChangePassVM"></viewmodel:ChangePasswordViewModel>
+    <viewmodel:NhanVienViewModel x:Key="NhanVienVM"></viewmodel:NhanVienViewModel>
+    <viewmodel:TonKhoViewModel x:Key="TonKhoVM"></viewmodel:TonKhoViewModel>
+    <viewmodel:BanHangViewModel x:Key="BanHangVM"></viewmodel:BanHangViewModel>
+    <viewmodel:NhaCungCapViewModel x:Key="NhaCungCapVM"></viewmodel:NhaCungCapViewModel>
+    <viewmodel:LichSuNhapKhoViewModel x:Key="LichSuNhapKhoVM"></viewmodel:LichSuNhapKhoViewModel>
+    <viewmodel:LichSuXuatKhoViewModel x:Key="LichSuXuatKhoVM"></viewmodel:LichSuXuatKhoViewModel>
+    <viewmodel:XuatKhoViewModel x:Key="XuatKhoVM"></viewmodel:XuatKhoViewModel>
+    <viewmodel:NhapKhoViewModel x:Key="NhapKhoVM"></viewmodel:NhapKhoViewModel>
+    <viewmodel:QuanLyKhoViewModel x:Key="QuanLyKhoVM"></viewmodel:QuanLyKhoViewModel>
+    <viewmodel:KhachHangViewModel x:Key="KhachHangVM"></viewmodel:KhachHangViewModel>
+    <viewmodel:LichSuXoaKhachHangViewModel x:Key="LichSuXoaKHVM"></viewmodel:LichSuXoaKhachHangViewModel>
+    <viewmodel:LichSuXoaSuKienViewModel x:Key="LichSuXoaSKVM"></viewmodel:LichSuXoaSuKienViewModel>
+    <viewmodel:LichSuXuatHoaDonViewModel x:Key="LichSuXuatHoaDonVM"></viewmodel:LichSuXuatHoaDonViewModel>
+    <viewmodel:BangGioCongNhanVienViewModel x:Key="BangGiaCongNVVM"></viewmodel:BangGioCongNhanVienViewModel>
+    <viewmodel:LichSuXoaNhanVienViewModel x:Key="LichSuXoaNVVM"></viewmodel:LichSuXoaNhanVienViewModel>
+    <viewmodel:QuanLyTaiKhoanViewModel x:Key="QuanLyTKVM"></viewmodel:QuanLyTaiKhoanViewModel>
+    <viewmodel:QuanLyChamCongViewModel x:Key="QuanLyChamCongVM"></viewmodel:QuanLyChamCongViewModel>
+    <viewmodel:QuanLySanPhamViewModel x:Key="QuanLySanPhamVM"></viewmodel:QuanLySanPhamViewModel>
+    <viewmodel:ThongKeViewModel x:Key="ThongKeVM"></viewmodel:ThongKeViewModel>
+</ResourceDictionary>

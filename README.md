@@ -2,7 +2,7 @@
 --------------------------------------------------------------------------------
 This app'll help you in manage a bobapop shop. Thank for all 
 
-***Get programe***
+***Get program***
 ```
 git clone https://github.com/tranngocbaoduy/ManagementBobapop.git
 ```
